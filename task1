@@ -3,5 +3,6 @@ db.posts.find({
   author_id: "example.ru",
   score: { $gt: 100 }
 })
+
 передаем методу find json документ с параметрами поиска.
 $gt - оператор для проверки, что значение больше чем (greater than)

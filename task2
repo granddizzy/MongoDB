@@ -9,6 +9,7 @@ db.posts.insertMany([
     author: "skbx@example.ru"
   }
 ])
+
 Передаем в метод insertMany массив json документов
 параметр topics представляет из себя массив из одного элемента mongodb
 new Date() - создает объект содержащий текущее время
