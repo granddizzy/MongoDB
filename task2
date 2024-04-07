@@ -1,0 +1,15 @@
+db.posts.insertMany([
+  {
+    creation_date: new Date(),
+    author: "skbx@example.com",
+    topics: ["mongodb"]
+  },
+  {
+    creation_date: new Date("2021-12-31"),
+    author: "skbx@example.ru"
+  }
+])
+Передаем в метод insertMany массив json документов
+параметр topics представляет из себя массив из одного элемента mongodb
+new Date() - создает объект содержащий текущее время
+new Date("2021-12-31") - создает объект содержащий заданное время
