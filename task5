@@ -1,0 +1,40 @@
+Задание 5
+
+Цель практической работы:
+Научиться писать хранимые процедуры в MongoDB.
+
+Что нужно сделать:
+Создайте хранимую функцию shuffle, которая принимает один параметр — строку и возвращает строку со случайно переставленными символами.
+
+Советы и указания:
+Используйте встроенный в JavaScript метод Math.random() для сортировки символов в строке.
+
+db.system.js.save(
+   {
+     _id: "shuffle",
+     value: function(inputString) {
+       let characters = inputString.split('');
+       for (var i = characters.length - 1; i > 0; i--) {
+         var j = Math.floor(Math.random() * (i + 1));
+         var temp = characters[i];
+         characters[i] = characters[j];
+         characters[j] = temp;
+       }
+       return characters.join('');
+     }
+   }
+);
+
+передаем в db.system.js.save json документ который описывает хранимую функцию c идентификатором shuffle.
+value хранит описание функции на языке JS.
+
+функция принимает строку inputSting, разбивает на символы создавая массив characters.
+в цикле для количества равного длине строки случайным образом выбираем значение j от 0 до i (i  равен длине массива)
+и меняем символ с индексом i на символ с индексом j, после чего собираем массив в строку используя join
+и возвращаем
+
+после этого можем обратится к базе и вызвать эту функцию используя eval
+
+let input = "roman";
+let shuffled = db.eval("shuffle('" + input + "')");
+print(shuffled);
