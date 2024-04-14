@@ -9,9 +9,11 @@
 
 db.posts.find({
   topics: "as",
-  author_id: "example.ru",
+  author: { $regex: /example\.ru$/ },
   score: { $gt: 100 }
 })
 
 передаем методу find json документ с параметрами поиска.
+в поле author передаем документ с методом $regex использующим регулярное выражение /example\.ru$/
+для поиска строки оканчивающейся на example.ru
 $gt - оператор для проверки, что значение больше чем (greater than)

@@ -10,7 +10,7 @@
 
 db.users.aggregate([
   { $match: { visits: { $gt: 300 } } },
-  { $addFields: { first_letter: { $substr: ["$name", 0, 1] } } },
+  { $addFields: { first_letter: { $substr: ["$first_name", 0, 1] } } },
   { $group: { _id: "$first_letter", total_karma: { $sum: "$karma" } } }
 ])
 
